@@ -17,6 +17,7 @@ firmware:
 	cp app/build/right/zephyr/zmk.uf2 ../microdox-right-$$(date "+%Y-%m-%d-%H-%M").uf2
 
 update-upstream:
+	git tag custom/$(date "+%Y-%m-%d-%H-%M")-before
 	git fetch upstream
 	git checkout main
 	git pull
@@ -24,3 +25,4 @@ update-upstream:
 	git push origin HEAD
 	git checkout custom
 	git rebase main
+	git tag custom/$(date "+%Y-%m-%d-%H-%M")-after
