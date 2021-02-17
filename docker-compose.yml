@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  zmk:
+    # container_name: backend_service_container
+    # restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: bash
+    volumes:
+      - .:/zmk
+      - ../zmk-config:/zmk-config
+      - .:/Users/seb/web/zmk/zmk
+      - ../zmk-config:/Users/seb/web/zmk/zmk-config
+    # ports:
+    #   - "5000:5000"
+    environment:
+      DOCKER_TEST: 'test'
+      ZEPHYR_SDK_INSTALL_DIR: '/root/.local/zephyr-sdk-0.11.4'
