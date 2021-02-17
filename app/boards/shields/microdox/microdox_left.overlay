@@ -7,6 +7,14 @@
 #include "microdox.dtsi"
 
 &kscan0 {
+    row-gpios
+        = <&pro_micro_d 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&pro_micro_d 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        // change pin D8 to D7 as output 8 (B4) is broken on the left side.
+        // Note that it is still 8 on the right side
+        , <&pro_micro_d 7  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&pro_micro_d 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        ;
 	col-gpios
 		= <&pro_micro_a  3 GPIO_ACTIVE_HIGH>
 		, <&pro_micro_a  2 GPIO_ACTIVE_HIGH>
