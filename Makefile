@@ -21,6 +21,12 @@ firmware-right:
 firmware: firmware-left firmware-right
 	echo "Done"
 
+firmware-settings-reset:
+	rm -r app/build
+	docker-compose run --rm zmk bash -c "source zephyr/zephyr-env.sh && cd app && west build -b nice_nano -- -DSHIELD=settings_reset"
+	cp app/build/zephyr/zmk.uf2 ../settings-reset-$$(date "+%Y-%m-%d-%H-%M").uf2
+	rm -r app/build
+
 update-upstream:
 	git tag custom/$(date "+%Y-%m-%d-%H-%M")-before
 	git fetch upstream
